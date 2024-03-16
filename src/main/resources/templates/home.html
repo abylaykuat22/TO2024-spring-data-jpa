@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="/developer/search" method="get">
+  <input name="search" type="text" placeholder="Search...">
+  <button>SEARCH</button>
+</form>
+<form action="/developer/add" method="post">
+  <input type="text" name="name">
+  <input type="text" name="birthPlace">
+  <input type="number" name="age">
+  <button>ADD DEVELOPER</button>
+</form>
+  <table cellpadding="10px">
+    <thead>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>BIRTH PLACE</th>
+      <th>DETAILS</th>
+    </thead>
+    <tbody>
+      <tr th:each="developer : ${developers}">
+        <td th:text="${developer.id}"></td>
+        <td th:text="${developer.getName}"></td>
+        <td th:text="${developer.age}"></td>
+        <td th:text="${developer.birthPlace}"></td>
+        <td><a th:href="${'/developer/' + developer.getId()}">DETAILS</a></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

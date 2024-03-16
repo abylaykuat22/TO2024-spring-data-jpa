@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="/developer/edit" method="post">
+  <input type="hidden" th:value="${developer.id}" name="id">
+  <input th:value="${developer.getName}" type="text" name="name">
+  <input th:value="${developer.birthPlace}" type="text" name="birthPlace">
+  <input th:value="${developer.age}" type="number" name="age">
+  <button>EDIT DEVELOPER</button>
+</form>
+</body>
+</html>
