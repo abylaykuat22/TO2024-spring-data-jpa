@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 
-  List<Developer> findAllByNameIgnoreCaseOrAge(String name);
+  List<Developer> findAllByNameIgnoreCaseOrAge(String name, String age);
 
   @Query("SELECT d FROM Developer d "
       + "WHERE d.name ilike concat('%', :search, '%') "

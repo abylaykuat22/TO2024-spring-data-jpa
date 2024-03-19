@@ -1,7 +1,9 @@
 package bitlab.to2024g1springdatajpa.controller;
 
 import bitlab.to2024g1springdatajpa.model.Developer;
+import bitlab.to2024g1springdatajpa.model.Language;
 import bitlab.to2024g1springdatajpa.service.DeveloperService;
+import bitlab.to2024g1springdatajpa.service.LanguageService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
   @Autowired
   private DeveloperService developerService;
+  @Autowired
+  private LanguageService languageService;
 
   @GetMapping("/")
   public String homePage(Model model) {
     List<Developer> developers = developerService.getSortedDevelopers();
     model.addAttribute("developers", developers);
+
+    List<Language> languages = languageService.getLanguages();
+    model.addAttribute("languages", languages);
     return "home";
   }
 
@@ -33,6 +40,9 @@ public class HomeController {
   public String detailsPage(@PathVariable Long id, Model model) {
     Developer developer = developerService.getDeveloperById(id);
     model.addAttribute("developer", developer);
+
+    List<Language> languages = languageService.getLanguages();
+    model.addAttribute("languages", languages);
     return "details";
   }
 

@@ -10,6 +10,13 @@
   <input th:value="${developer.getName}" type="text" name="name">
   <input th:value="${developer.birthPlace}" type="text" name="birthPlace">
   <input th:value="${developer.age}" type="number" name="age">
+  <select name="language.id">
+    <option th:each="lang : ${languages}"
+            th:text="${lang.name}"
+            th:value="${lang.id}"
+            th:selected="${developer.language.id == lang.id}">
+    </option>
+  </select>
   <button>EDIT DEVELOPER</button>
 </form>
 </body>

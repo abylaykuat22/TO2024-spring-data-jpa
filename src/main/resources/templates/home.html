@@ -13,6 +13,9 @@
   <input type="text" name="name">
   <input type="text" name="birthPlace">
   <input type="number" name="age">
+  <select name="language.id">
+    <option th:each="lang : ${languages}" th:text="${lang.name}" th:value="${lang.id}"></option>
+  </select>
   <button>ADD DEVELOPER</button>
 </form>
   <table cellpadding="10px">
@@ -21,6 +24,7 @@
       <th>NAME</th>
       <th>AGE</th>
       <th>BIRTH PLACE</th>
+      <th>LANGUAGE</th>
       <th>DETAILS</th>
     </thead>
     <tbody>
@@ -29,6 +33,7 @@
         <td th:text="${developer.getName}"></td>
         <td th:text="${developer.age}"></td>
         <td th:text="${developer.birthPlace}"></td>
+        <td th:text="${developer.language.name}"></td>
         <td><a th:href="${'/developer/' + developer.getId()}">DETAILS</a></td>
       </tr>
     </tbody>
